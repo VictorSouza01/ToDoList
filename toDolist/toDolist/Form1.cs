@@ -22,7 +22,7 @@ namespace toDolist
             this.txt_item.Text = txt_item.Text;
         }
         List L = new List();
-        public String CriarPasta()
+        public void CriarPasta()
         {
             string folderPath = @"C:\listToDo";
             if (!Directory.Exists(folderPath))
@@ -30,7 +30,6 @@ namespace toDolist
                 Directory.CreateDirectory(folderPath);
                 Console.WriteLine(folderPath);
             }
-            return folderPath;
         }
         public void GravarArquivoTXT()
         {
@@ -44,6 +43,7 @@ namespace toDolist
         public void LerArquivoTXT()
         {
             if (File.Exists("C:\\listToDo\\list.txt"))//Verificando se existe ou não o arquivo
+            {
                 if (File.Exists("C:\\listToDo\\list.txt"))
                 {
                     foreach (string line in System.IO.File.ReadLines(@"C:\\listToDo\\list.txt"))
@@ -53,6 +53,7 @@ namespace toDolist
                         Console.ReadLine();
                     }
                 }
+            }
         }
         public void AdicionarNaLista()
         {
@@ -102,8 +103,7 @@ namespace toDolist
                 txt_item.Text = "";
             }
         }
-
-        private void btn_add_KeyDown(object sender, KeyEventArgs e)
+        private void txt_item_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter) //Codigo para adicionar ao pressionar o ENTER
             {
@@ -198,5 +198,7 @@ namespace toDolist
                 ex.Message);
             }
         }
+
+
     }
 }
