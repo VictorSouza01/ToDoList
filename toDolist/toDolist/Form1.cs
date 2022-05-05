@@ -11,9 +11,9 @@ using System.IO;
 
 namespace toDolist
 {
-    public partial class Form1 : Form
+    public partial class Janela1 : Form
     {
-        public Form1()
+        public Janela1()
         {
             InitializeComponent();
         }
@@ -71,7 +71,6 @@ namespace toDolist
                 MessageBox.Show("Escreva algo para adicionar na lista");
             }
         }
-
         public void ListarElementos()
         {
             data_grid_view_result.Rows.Clear();
@@ -81,6 +80,7 @@ namespace toDolist
                 data_grid_view_result.Rows.Add(i, p.item);
                 i++;
             }
+            
             txt_qtd_tarefas.Text = "N°" + i;
 
             //aqui é o text
@@ -91,6 +91,7 @@ namespace toDolist
             try
             {
                 AdicionarNaLista();
+                GravarArquivoTXT();
             }
             catch (Exception ex)
             {
@@ -110,6 +111,7 @@ namespace toDolist
                 try
                 {
                     AdicionarNaLista();
+                    GravarArquivoTXT();
                 }
                 catch (Exception ex)
                 {
@@ -130,9 +132,12 @@ namespace toDolist
             {
                 if (e.ColumnIndex == data_grid_view_result.Columns["excluir"].Index)
                 {
-                    int text = (int)data_grid_view_result.CurrentRow.Cells[0].Value; //recebendo o valor da coluna 0 na linha atual do clique para poder usar no metodo de apagar
-                    L.ApagarDaLista(text);
-                    ListarElementos();
+                    if (MessageBox.Show("Deseja realmente apagar esta tarefa?", "ATENÇÃO!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        int text = (int)data_grid_view_result.CurrentRow.Cells[0].Value; //recebendo o valor da coluna 0 na linha atual do clique para poder usar no metodo de apagar
+                        L.ApagarDaLista(text);
+                        ListarElementos();
+                    }
                 }
             }
             catch (Exception ex)
@@ -141,7 +146,6 @@ namespace toDolist
                     "!!" +
                     "\n\n\n Erro: " + ex.Message);
             }
-
             try
             {
                 if (e.ColumnIndex == data_grid_view_result.Columns["concluir"].Index)
@@ -175,7 +179,7 @@ namespace toDolist
                     "\n\n\n Erro: " + ex.Message);
             }
         }
-        private void Form1_Load(object sender, EventArgs e)
+        private void Janela1_Load_1(object sender, EventArgs e)
         {
             try
             {
@@ -198,7 +202,5 @@ namespace toDolist
                 ex.Message);
             }
         }
-
-
     }
 }

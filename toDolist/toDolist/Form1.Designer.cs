@@ -1,6 +1,6 @@
 ﻿namespace toDolist
 {
-    partial class Form1
+    partial class Janela1
     {
         /// <summary>
         /// Variável de designer necessária.
@@ -29,23 +29,26 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Janela1));
             this.data_grid_view_result = new System.Windows.Forms.DataGridView();
-            this.numeroTarefa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tarefas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.excluir = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Concluir = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_add = new System.Windows.Forms.Button();
             this.btn_save = new System.Windows.Forms.Button();
             this.txt_item = new System.Windows.Forms.TextBox();
             this.txt_qtd_tarefas = new System.Windows.Forms.Label();
+            this.numeroTarefa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tarefas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.excluir = new System.Windows.Forms.DataGridViewImageColumn();
+            this.Concluir = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.data_grid_view_result)).BeginInit();
             this.SuspendLayout();
             // 
             // data_grid_view_result
             // 
             this.data_grid_view_result.AllowUserToAddRows = false;
+            this.data_grid_view_result.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.data_grid_view_result.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.data_grid_view_result.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.data_grid_view_result.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -58,44 +61,9 @@
             this.data_grid_view_result.Name = "data_grid_view_result";
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.data_grid_view_result.RowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.data_grid_view_result.Size = new System.Drawing.Size(735, 468);
+            this.data_grid_view_result.Size = new System.Drawing.Size(826, 468);
             this.data_grid_view_result.TabIndex = 4;
             this.data_grid_view_result.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_grid_view_result_CellContentClick);
-            // 
-            // numeroTarefa
-            // 
-            this.numeroTarefa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.numeroTarefa.HeaderText = "N°";
-            this.numeroTarefa.Name = "numeroTarefa";
-            this.numeroTarefa.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.numeroTarefa.Visible = false;
-            // 
-            // Tarefas
-            // 
-            this.Tarefas.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Tarefas.HeaderText = "Tarefas";
-            this.Tarefas.Name = "Tarefas";
-            this.Tarefas.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // excluir
-            // 
-            this.excluir.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.excluir.HeaderText = "Excluir";
-            this.excluir.Image = ((System.Drawing.Image)(resources.GetObject("excluir.Image")));
-            this.excluir.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.excluir.Name = "excluir";
-            this.excluir.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.excluir.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.excluir.Width = 63;
-            // 
-            // Concluir
-            // 
-            this.Concluir.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Concluir.HeaderText = "Check";
-            this.Concluir.Name = "Concluir";
-            this.Concluir.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Concluir.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.Concluir.Width = 63;
             // 
             // label1
             // 
@@ -124,6 +92,7 @@
             // 
             // btn_save
             // 
+            this.btn_save.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btn_save.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("btn_save.BackgroundImage")));
             this.btn_save.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
             this.btn_save.Cursor = System.Windows.Forms.Cursors.Hand;
@@ -131,7 +100,7 @@
             this.btn_save.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Gainsboro;
             this.btn_save.FlatAppearance.MouseOverBackColor = System.Drawing.Color.Transparent;
             this.btn_save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_save.Location = new System.Drawing.Point(715, 13);
+            this.btn_save.Location = new System.Drawing.Point(806, 12);
             this.btn_save.Name = "btn_save";
             this.btn_save.Size = new System.Drawing.Size(32, 27);
             this.btn_save.TabIndex = 7;
@@ -151,29 +120,66 @@
             // txt_qtd_tarefas
             // 
             this.txt_qtd_tarefas.Font = new System.Drawing.Font("Palatino Linotype", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_qtd_tarefas.Location = new System.Drawing.Point(551, 16);
+            this.txt_qtd_tarefas.Location = new System.Drawing.Point(12, 71);
             this.txt_qtd_tarefas.Name = "txt_qtd_tarefas";
-            this.txt_qtd_tarefas.Size = new System.Drawing.Size(79, 23);
+            this.txt_qtd_tarefas.Size = new System.Drawing.Size(569, 23);
             this.txt_qtd_tarefas.TabIndex = 9;
             this.txt_qtd_tarefas.Text = "N°";
             // 
-            // Form1
+            // numeroTarefa
+            // 
+            this.numeroTarefa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.numeroTarefa.HeaderText = "N°";
+            this.numeroTarefa.Name = "numeroTarefa";
+            this.numeroTarefa.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.numeroTarefa.Visible = false;
+            this.numeroTarefa.Width = 44;
+            // 
+            // Tarefas
+            // 
+            this.Tarefas.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Tarefas.HeaderText = "Tarefas";
+            this.Tarefas.Name = "Tarefas";
+            this.Tarefas.ReadOnly = true;
+            this.Tarefas.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // excluir
+            // 
+            this.excluir.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.excluir.HeaderText = "Excluir";
+            this.excluir.Image = ((System.Drawing.Image)(resources.GetObject("excluir.Image")));
+            this.excluir.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.excluir.Name = "excluir";
+            this.excluir.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.excluir.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.excluir.Width = 63;
+            // 
+            // Concluir
+            // 
+            this.Concluir.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.Concluir.HeaderText = "Check";
+            this.Concluir.Name = "Concluir";
+            this.Concluir.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Concluir.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Concluir.Width = 63;
+            // 
+            // Janela1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(759, 600);
+            this.ClientSize = new System.Drawing.Size(850, 600);
             this.Controls.Add(this.txt_qtd_tarefas);
             this.Controls.Add(this.txt_item);
             this.Controls.Add(this.btn_save);
             this.Controls.Add(this.btn_add);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.data_grid_view_result);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
-            this.Name = "Form1";
+            this.MinimumSize = new System.Drawing.Size(609, 350);
+            this.Name = "Janela1";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "ToDo List";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.Load += new System.EventHandler(this.Janela1_Load_1);
             ((System.ComponentModel.ISupportInitialize)(this.data_grid_view_result)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

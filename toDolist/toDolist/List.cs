@@ -9,7 +9,6 @@ namespace toDolist
     internal class List
     {
         public string item { get; set; }
-        public string recebe { get; set; }
 
         public List(string item)
         {
@@ -21,6 +20,7 @@ namespace toDolist
         }
 
         public List<List> tarefas = new List<List>();
+        
 
         public void AdicionarNaLista(String text)
         {
