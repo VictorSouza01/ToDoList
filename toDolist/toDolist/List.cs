@@ -20,7 +20,6 @@ namespace toDolist
         }
 
         public List<List> tarefas = new List<List>();
-        
 
         public void AdicionarNaLista(String text)
         {
@@ -29,6 +28,10 @@ namespace toDolist
         public void ApagarDaLista(int text)
         {
             tarefas.RemoveAt(text);
+        }
+        public void ApagarTodaLista()
+        {
+            tarefas.Clear();
         }
     }
 }

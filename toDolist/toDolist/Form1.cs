@@ -13,6 +13,8 @@ namespace toDolist
 {
     public partial class Janela1 : Form
     {
+        List L = new List();
+        int contador = 0;
         public Janela1()
         {
             InitializeComponent();
@@ -21,7 +23,6 @@ namespace toDolist
         {
             this.txt_item.Text = txt_item.Text;
         }
-        List L = new List();
         public void CriarPasta()
         {
             string folderPath = @"C:\listToDo";
@@ -125,19 +126,24 @@ namespace toDolist
                 }
             }
         }
+        public void Excluir(int text)
+        {
+            if (MessageBox.Show("Deseja realmente apagar esta tarefa?", "ATENÇÃO!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                L.ApagarDaLista(text);
+                ListarElementos();
+            }
+        }
+
 
         private void data_grid_view_result_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
-                if (e.ColumnIndex == data_grid_view_result.Columns["excluir"].Index)
+                if (e.ColumnIndex == data_grid_view_result.Columns["btn_excluir"].Index)
                 {
-                    if (MessageBox.Show("Deseja realmente apagar esta tarefa?", "ATENÇÃO!", MessageBoxButtons.YesNo) == DialogResult.Yes)
-                    {
-                        int text = (int)data_grid_view_result.CurrentRow.Cells[0].Value; //recebendo o valor da coluna 0 na linha atual do clique para poder usar no metodo de apagar
-                        L.ApagarDaLista(text);
-                        ListarElementos();
-                    }
+                    int text = (int)data_grid_view_result.CurrentRow.Cells[0].Value; //recebendo o valor da coluna 0 na linha atual do clique para poder usar no metodo de apagar
+                    Excluir(text);
                 }
             }
             catch (Exception ex)
@@ -146,16 +152,35 @@ namespace toDolist
                     "!!" +
                     "\n\n\n Erro: " + ex.Message);
             }
+
             try
             {
-                if (e.ColumnIndex == data_grid_view_result.Columns["concluir"].Index)
+                String copia = Convert.ToString(data_grid_view_result.CurrentRow.Cells[0].Value);
+                if (e.ColumnIndex == data_grid_view_result.Columns["selecao"].Index)
                 {
-                    // configuração que marca a linha completa.
-                    data_grid_view_result.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                    data_grid_view_result.Update();
-                    data_grid_view_result.Select();
-                    // configuração do estilo da linha
-                    data_grid_view_result.CurrentRow.DefaultCellStyle.BackColor = Color.Yellow;
+                    data_grid_view_result.EndEdit();
+                    String valor = data_grid_view_result.Rows[e.RowIndex].Cells[3].Value.ToString();
+                    if (valor == "True")
+                    {
+                        data_grid_view_result.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                        data_grid_view_result.Update();
+                        data_grid_view_result.Select();
+                        data_grid_view_result.CurrentRow.DefaultCellStyle.BackColor = Color.Yellow;
+                        btn_excluir_selecao.Visible = true;
+                        contador++;
+                    }
+                    else if (valor == "False")
+                    {
+                        data_grid_view_result.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+                        data_grid_view_result.Update();
+                        data_grid_view_result.Select();
+                        data_grid_view_result.CurrentRow.DefaultCellStyle.BackColor = Color.White;
+                        contador--; 
+                        if (contador == 0)
+                        {
+                            btn_excluir_selecao.Visible = false;
+                        }
+                    }
                 }
             }
             catch (Exception ex)
@@ -164,6 +189,10 @@ namespace toDolist
                     "!!" +
                     "\n\n\n Erro: " + ex.Message);
             }
+        }
+        private void btn_excluir_selecao_Click(object sender, EventArgs e)
+        {
+            //Aqui vai o codigo para excluir todos os selecionados
         }
         private void btn_save_Click(object sender, EventArgs e)
         {
@@ -198,6 +227,24 @@ namespace toDolist
             catch (Exception ex)
             {
                 MessageBox.Show("Erro ao carregar arquivo\n\n\n" +
+                "Código do erro: \n\n\n" +
+                ex.Message);
+            }
+        }
+        private void btn_excluir_lista_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (MessageBox.Show("Esta opção irá apagar todas as tarefas!!\n\n" +
+                    "Deseja realmente apagar todas as tarefas?", "ATENÇÃO!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    L.ApagarTodaLista();
+                    ListarElementos();
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Erro ao apagar as tarefas\n\n\n" +
                 "Código do erro: \n\n\n" +
                 ex.Message);
             }
