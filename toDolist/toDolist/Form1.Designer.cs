@@ -31,10 +31,6 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Janela1));
             this.data_grid_view_result = new System.Windows.Forms.DataGridView();
-            this.numeroTarefa = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Tarefas = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btn_excluir = new System.Windows.Forms.DataGridViewImageColumn();
-            this.selecao = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_add = new System.Windows.Forms.Button();
             this.btn_save = new System.Windows.Forms.Button();
@@ -42,6 +38,10 @@
             this.txt_qtd_tarefas = new System.Windows.Forms.Label();
             this.btn_excluir_selecao = new System.Windows.Forms.Button();
             this.btn_excluir_lista = new System.Windows.Forms.Button();
+            this.numeroTarefa = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Tarefas = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.btn_excluir = new System.Windows.Forms.DataGridViewImageColumn();
+            this.selecao = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.data_grid_view_result)).BeginInit();
             this.SuspendLayout();
             // 
@@ -66,42 +66,6 @@
             this.data_grid_view_result.Size = new System.Drawing.Size(835, 468);
             this.data_grid_view_result.TabIndex = 4;
             this.data_grid_view_result.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_grid_view_result_CellContentClick);
-            // 
-            // numeroTarefa
-            // 
-            this.numeroTarefa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.numeroTarefa.HeaderText = "N°";
-            this.numeroTarefa.Name = "numeroTarefa";
-            this.numeroTarefa.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.numeroTarefa.Visible = false;
-            // 
-            // Tarefas
-            // 
-            this.Tarefas.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Tarefas.HeaderText = "Tarefas";
-            this.Tarefas.Name = "Tarefas";
-            this.Tarefas.ReadOnly = true;
-            this.Tarefas.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            // 
-            // btn_excluir
-            // 
-            this.btn_excluir.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.btn_excluir.HeaderText = "Excluir";
-            this.btn_excluir.Image = ((System.Drawing.Image)(resources.GetObject("btn_excluir.Image")));
-            this.btn_excluir.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
-            this.btn_excluir.Name = "btn_excluir";
-            this.btn_excluir.ReadOnly = true;
-            this.btn_excluir.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.btn_excluir.Width = 44;
-            // 
-            // selecao
-            // 
-            this.selecao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.selecao.HeaderText = "Check";
-            this.selecao.Name = "selecao";
-            this.selecao.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.selecao.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.selecao.Width = 63;
             // 
             // label1
             // 
@@ -198,6 +162,43 @@
             this.btn_excluir_lista.UseVisualStyleBackColor = true;
             this.btn_excluir_lista.Click += new System.EventHandler(this.btn_excluir_lista_Click);
             // 
+            // numeroTarefa
+            // 
+            this.numeroTarefa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.numeroTarefa.HeaderText = "N°";
+            this.numeroTarefa.Name = "numeroTarefa";
+            this.numeroTarefa.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            this.numeroTarefa.Visible = false;
+            this.numeroTarefa.Width = 44;
+            // 
+            // Tarefas
+            // 
+            this.Tarefas.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Tarefas.HeaderText = "Tarefas";
+            this.Tarefas.Name = "Tarefas";
+            this.Tarefas.ReadOnly = true;
+            this.Tarefas.Resizable = System.Windows.Forms.DataGridViewTriState.False;
+            // 
+            // btn_excluir
+            // 
+            this.btn_excluir.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.btn_excluir.HeaderText = "Excluir";
+            this.btn_excluir.Image = ((System.Drawing.Image)(resources.GetObject("btn_excluir.Image")));
+            this.btn_excluir.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.btn_excluir.Name = "btn_excluir";
+            this.btn_excluir.ReadOnly = true;
+            this.btn_excluir.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.btn_excluir.Width = 44;
+            // 
+            // selecao
+            // 
+            this.selecao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
+            this.selecao.HeaderText = "Check";
+            this.selecao.Name = "selecao";
+            this.selecao.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.selecao.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.selecao.Width = 63;
+            // 
             // Janela1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -232,11 +233,11 @@
         private System.Windows.Forms.TextBox txt_item;
         private System.Windows.Forms.Label txt_qtd_tarefas;
         private System.Windows.Forms.Button btn_excluir_selecao;
+        private System.Windows.Forms.Button btn_excluir_lista;
         private System.Windows.Forms.DataGridViewTextBoxColumn numeroTarefa;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tarefas;
         private System.Windows.Forms.DataGridViewImageColumn btn_excluir;
         private System.Windows.Forms.DataGridViewCheckBoxColumn selecao;
-        private System.Windows.Forms.Button btn_excluir_lista;
     }
 }
 

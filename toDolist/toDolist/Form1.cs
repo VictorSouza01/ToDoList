@@ -15,6 +15,13 @@ namespace toDolist
     {
         List L = new List();
         int contador = 0;
+
+        Queue<string> Numberscopy = new Queue<string>();
+        /*
+        Criando uma fila para armazenar os valores temporarios dos numeros que serao excluidos
+        de uma vez da lista principal
+        */
+
         public Janela1()
         {
             InitializeComponent();
@@ -32,14 +39,20 @@ namespace toDolist
                 Console.WriteLine(folderPath);
             }
         }
+        public void Excluir(String text)
+        {
+            L.ApagarDaLista(text);
+            ListarElementos();
+        }
         public void GravarArquivoTXT()
         {
             StreamWriter sw = new StreamWriter("C:\\listToDo\\list.txt");
-            foreach (List p in L.tarefas)
+            foreach (String p in L.tarefas)
             {
-                sw.WriteLine(p.item);
+                sw.WriteLine(p);
             }
             sw.Close();
+            VerificaContadorDoBTN(contador);
         }
         public void LerArquivoTXT()
         {
@@ -76,17 +89,20 @@ namespace toDolist
         {
             data_grid_view_result.Rows.Clear();
             int i = 0;
-            foreach (List p in L.tarefas)
+            foreach (String p in L.tarefas)
             {
-                data_grid_view_result.Rows.Add(i, p.item);
+                data_grid_view_result.Rows.Add(i, p);
                 i++;
             }
-            
             txt_qtd_tarefas.Text = "N°" + i;
-
-            //aqui é o text
         }
-
+        public void VerificaContadorDoBTN(int contador)
+        {
+            if (contador == 0)
+            {
+                btn_excluir_selecao.Visible = false;
+            }
+        }
         private void btn_add_Click(object sender, EventArgs e)
         {
             try
@@ -126,24 +142,17 @@ namespace toDolist
                 }
             }
         }
-        public void Excluir(int text)
-        {
-            if (MessageBox.Show("Deseja realmente apagar esta tarefa?", "ATENÇÃO!", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                L.ApagarDaLista(text);
-                ListarElementos();
-            }
-        }
-
-
         private void data_grid_view_result_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             try
             {
                 if (e.ColumnIndex == data_grid_view_result.Columns["btn_excluir"].Index)
                 {
-                    int text = (int)data_grid_view_result.CurrentRow.Cells[0].Value; //recebendo o valor da coluna 0 na linha atual do clique para poder usar no metodo de apagar
-                    Excluir(text);
+                    if (MessageBox.Show("Deseja realmente apagar esta tarefa?", "ATENÇÃO!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    {
+                        String text = (String)data_grid_view_result.CurrentRow.Cells[1].Value; //recebendo o valor da coluna 0 na linha atual do clique para poder usar no metodo de apagar
+                        Excluir(text);
+                    }
                 }
             }
             catch (Exception ex)
@@ -152,12 +161,11 @@ namespace toDolist
                     "!!" +
                     "\n\n\n Erro: " + ex.Message);
             }
-
             try
             {
-                String copia = Convert.ToString(data_grid_view_result.CurrentRow.Cells[0].Value);
                 if (e.ColumnIndex == data_grid_view_result.Columns["selecao"].Index)
                 {
+                    String copia = Convert.ToString(data_grid_view_result.CurrentRow.Cells[1].Value);
                     data_grid_view_result.EndEdit();
                     String valor = data_grid_view_result.Rows[e.RowIndex].Cells[3].Value.ToString();
                     if (valor == "True")
@@ -167,6 +175,8 @@ namespace toDolist
                         data_grid_view_result.Select();
                         data_grid_view_result.CurrentRow.DefaultCellStyle.BackColor = Color.Yellow;
                         btn_excluir_selecao.Visible = true;
+                        Numberscopy.Enqueue(copia);//Adiciona o valor que foi selecionado na fila, para que
+                        //possa ser removido ou não, caso ele não seja mais selecionado
                         contador++;
                     }
                     else if (valor == "False")
@@ -175,11 +185,9 @@ namespace toDolist
                         data_grid_view_result.Update();
                         data_grid_view_result.Select();
                         data_grid_view_result.CurrentRow.DefaultCellStyle.BackColor = Color.White;
-                        contador--; 
-                        if (contador == 0)
-                        {
-                            btn_excluir_selecao.Visible = false;
-                        }
+                        Numberscopy.Dequeue();//remove o valor da queue
+                        contador--;
+                        VerificaContadorDoBTN(contador);
                     }
                 }
             }
@@ -192,7 +200,26 @@ namespace toDolist
         }
         private void btn_excluir_selecao_Click(object sender, EventArgs e)
         {
-            //Aqui vai o codigo para excluir todos os selecionados
+            try
+            {
+                if (MessageBox.Show("Deseja realmente apagar estas tarefas?", "ATENÇÃO!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                {
+                    foreach (string number in Numberscopy)
+                    {
+                        Excluir(number);
+                    }
+                }
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Erro ao apagar seleção!" +
+                "!!" +
+                "\n\n\n Erro: " + ex.Message);
+            }
+            finally
+            {
+                VerificaContadorDoBTN(contador);
+            }
         }
         private void btn_save_Click(object sender, EventArgs e)
         {

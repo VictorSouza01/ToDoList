@@ -8,26 +8,19 @@ namespace toDolist
 {
     internal class List
     {
-        public string item { get; set; }
-
-        public List(string item)
-        {
-            this.item = item;
-        }
-
         public List()
         {
         }
 
-        public List<List> tarefas = new List<List>();
+        public List<String> tarefas = new List<String>();
 
         public void AdicionarNaLista(String text)
         {
-            tarefas.Add(new List(text));
+            tarefas.Add(text);
         }
-        public void ApagarDaLista(int text)
+        public void ApagarDaLista(String text)
         {
-            tarefas.RemoveAt(text);
+            tarefas.Remove(text);
         }
         public void ApagarTodaLista()
         {
