@@ -48,9 +48,7 @@
             // data_grid_view_result
             // 
             this.data_grid_view_result.AllowUserToAddRows = false;
-            this.data_grid_view_result.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
+            this.data_grid_view_result.AllowUserToDeleteRows = false;
             this.data_grid_view_result.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
             this.data_grid_view_result.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.data_grid_view_result.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -61,6 +59,7 @@
             this.data_grid_view_result.Cursor = System.Windows.Forms.Cursors.Hand;
             this.data_grid_view_result.Location = new System.Drawing.Point(12, 120);
             this.data_grid_view_result.Name = "data_grid_view_result";
+            this.data_grid_view_result.ReadOnly = true;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.data_grid_view_result.RowsDefaultCellStyle = dataGridViewCellStyle1;
             this.data_grid_view_result.Size = new System.Drawing.Size(835, 468);
@@ -84,7 +83,7 @@
             this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_add.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_add.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btn_add.Location = new System.Drawing.Point(430, 12);
+            this.btn_add.Location = new System.Drawing.Point(430, 13);
             this.btn_add.Name = "btn_add";
             this.btn_add.Size = new System.Drawing.Size(115, 27);
             this.btn_add.TabIndex = 6;
@@ -167,6 +166,7 @@
             this.numeroTarefa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.numeroTarefa.HeaderText = "N°";
             this.numeroTarefa.Name = "numeroTarefa";
+            this.numeroTarefa.ReadOnly = true;
             this.numeroTarefa.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.numeroTarefa.Visible = false;
             this.numeroTarefa.Width = 44;
@@ -187,7 +187,7 @@
             this.btn_excluir.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
             this.btn_excluir.Name = "btn_excluir";
             this.btn_excluir.ReadOnly = true;
-            this.btn_excluir.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.btn_excluir.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.btn_excluir.Width = 44;
             // 
             // selecao
@@ -195,7 +195,8 @@
             this.selecao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.selecao.HeaderText = "Check";
             this.selecao.Name = "selecao";
-            this.selecao.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.selecao.ReadOnly = true;
+            this.selecao.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.selecao.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.selecao.Width = 63;
             // 

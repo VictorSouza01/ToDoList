@@ -39,17 +39,18 @@ namespace toDolist
                 Console.WriteLine(folderPath);
             }
         }
-        public void Excluir(String text)
+        public void Excluir(String Tarefa)
         {
-            L.ApagarDaLista(text);
+            //Erro ao apagar, pois ele não apaga
+            L.ApagarDaLista(Tarefa);
             ListarElementos();
         }
         public void GravarArquivoTXT()
         {
             StreamWriter sw = new StreamWriter("C:\\listToDo\\list.txt");
-            foreach (String p in L.tarefas)
+            foreach (List p in L.tarefas)
             {
-                sw.WriteLine(p);
+                sw.WriteLine(p.Tarefa);
             }
             sw.Close();
             VerificaContadorDoBTN(contador);
@@ -61,7 +62,7 @@ namespace toDolist
                 if (File.Exists("C:\\listToDo\\list.txt"))
                 {
                     foreach (string line in System.IO.File.ReadLines(@"C:\\listToDo\\list.txt"))
-                    {
+                    {//Tem q corrigir, mudar para json 
                         L.AdicionarNaLista(line);
                         ListarElementos();
                         Console.ReadLine();
@@ -74,9 +75,8 @@ namespace toDolist
             if (txt_item.Text != "")
             {
                 //Fazer verificação se o item já está na lista ou não... Um for eu acho que resolve
-
-                String text = txt_item.Text;
-                L.AdicionarNaLista(text);
+                String Tarefa = txt_item.Text;
+                L.AdicionarNaLista(Tarefa);
                 txt_item.Text = "";
                 ListarElementos();
             }
@@ -89,9 +89,9 @@ namespace toDolist
         {
             data_grid_view_result.Rows.Clear();
             int i = 0;
-            foreach (String p in L.tarefas)
+            foreach (List p in L.tarefas)
             {
-                data_grid_view_result.Rows.Add(i, p);
+                data_grid_view_result.Rows.Add(i, p.Tarefa);
                 i++;
             }
             txt_qtd_tarefas.Text = "N°" + i;
@@ -150,8 +150,8 @@ namespace toDolist
                 {
                     if (MessageBox.Show("Deseja realmente apagar esta tarefa?", "ATENÇÃO!", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
-                        String text = (String)data_grid_view_result.CurrentRow.Cells[1].Value; //recebendo o valor da coluna 0 na linha atual do clique para poder usar no metodo de apagar
-                        Excluir(text);
+                        String Tarefa = (String)data_grid_view_result.CurrentRow.Cells[1].Value; 
+                        Excluir(Tarefa);
                     }
                 }
             }
@@ -207,6 +207,7 @@ namespace toDolist
                     foreach (string number in Numberscopy)
                     {
                         Excluir(number);
+                        MessageBox.Show(number);
                     }
                 }
             }
