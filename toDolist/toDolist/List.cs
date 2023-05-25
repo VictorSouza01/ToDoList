@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace toDolist
 {
@@ -26,11 +27,15 @@ namespace toDolist
         {
             tarefas.Add(new List(){Tarefa = Tarefa});
         }
-        public void ApagarDaLista(String Tarefa)
+
+        public void apagardalista(String tarefaRemove)
         {
-            tarefas.Remove(new List() { Tarefa = Tarefa });
-            //Não está mais apagando 
+
+            tarefas.RemoveAll(item => item.tarefa == tarefaRemove);
+
         }
+
+
         public void ApagarTodaLista()
         {
             tarefas.Clear();

@@ -8,14 +8,14 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Net;
 
 namespace toDolist
 {
     public partial class Janela1 : Form
     {
         List L = new List();
-        int contador = 0;
-
+        public int contador = 0;
         Queue<string> Numberscopy = new Queue<string>();
         /*
         Criando uma fila para armazenar os valores temporarios dos numeros que serao excluidos
@@ -26,28 +26,35 @@ namespace toDolist
         {
             InitializeComponent();
         }
-        public void setTxt_item(TextBox txt_item)
+
+        /*  Métodos/functions   */
+
+        private void CriarPasta()
         {
-            this.txt_item.Text = txt_item.Text;
-        }
-        public void CriarPasta()
-        {
-            string folderPath = @"C:\listToDo";
+            //C:\Users\victo\Documents
+            string folderPath = @"C:\Users\\" + Environment.MachineName + "\\Documents\\listToDo";
             if (!Directory.Exists(folderPath))
             {
                 Directory.CreateDirectory(folderPath);
                 Console.WriteLine(folderPath);
             }
         }
-        public void Excluir(String Tarefa)
+
+        public void setTxt_item(TextBox txt_item)
+        {
+            this.txt_item.Text = txt_item.Text;
+        }
+       
+        public void ExcluirLista(String Tarefa)
         {
             //Erro ao apagar, pois ele não apaga
-            L.ApagarDaLista(Tarefa);
-            ListarElementos();
+            L.apagardalista(Tarefa);
+            RecarregarGrid();
         }
+       
         public void GravarArquivoTXT()
         {
-            StreamWriter sw = new StreamWriter("C:\\listToDo\\list.txt");
+            StreamWriter sw = new StreamWriter("C:\\Users\\" + Environment.MachineName + "\\Documents\\listToDo\\list.txt");
             foreach (List p in L.tarefas)
             {
                 sw.WriteLine(p.Tarefa);
@@ -55,21 +62,23 @@ namespace toDolist
             sw.Close();
             VerificaContadorDoBTN(contador);
         }
+       
         public void LerArquivoTXT()
         {
-            if (File.Exists("C:\\listToDo\\list.txt"))//Verificando se existe ou não o arquivo
+            if (File.Exists("C:\\Users\\" + Environment.MachineName + "\\Documents\\listToDo\\list.txt"))//Verificando se existe ou não o arquivo
             {
-                if (File.Exists("C:\\listToDo\\list.txt"))
+                if (File.Exists("C:\\Users\\" + Environment.MachineName + "\\Documents\\listToDo\\list.txt"))
                 {
-                    foreach (string line in System.IO.File.ReadLines(@"C:\\listToDo\\list.txt"))
+                    foreach (string line in System.IO.File.ReadLines(@"C:\Users\\" + Environment.MachineName + "\\Documents\\listToDo\\list.txt"))
                     {//Tem q corrigir, mudar para json 
                         L.AdicionarNaLista(line);
-                        ListarElementos();
+                        RecarregarGrid();
                         Console.ReadLine();
                     }
                 }
             }
         }
+       
         public void AdicionarNaLista()
         {
             if (txt_item.Text != "")
@@ -78,14 +87,15 @@ namespace toDolist
                 String Tarefa = txt_item.Text;
                 L.AdicionarNaLista(Tarefa);
                 txt_item.Text = "";
-                ListarElementos();
+                RecarregarGrid();
             }
             else
             {
                 MessageBox.Show("Escreva algo para adicionar na lista");
             }
         }
-        public void ListarElementos()
+       
+        public void RecarregarGrid()
         {
             data_grid_view_result.Rows.Clear();
             int i = 0;
@@ -96,6 +106,7 @@ namespace toDolist
             }
             txt_qtd_tarefas.Text = "N°" + i;
         }
+      
         public void VerificaContadorDoBTN(int contador)
         {
             if (contador == 0)
@@ -103,6 +114,9 @@ namespace toDolist
                 btn_excluir_selecao.Visible = false;
             }
         }
+      
+
+        /*  Eventos */
         private void btn_add_Click(object sender, EventArgs e)
         {
             try
@@ -121,6 +135,7 @@ namespace toDolist
                 txt_item.Text = "";
             }
         }
+      
         private void txt_item_KeyUp(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter) //Codigo para adicionar ao pressionar o ENTER
@@ -142,16 +157,18 @@ namespace toDolist
                 }
             }
         }
+      
         private void data_grid_view_result_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            //Remoção de tarefas
             try
             {
                 if (e.ColumnIndex == data_grid_view_result.Columns["btn_excluir"].Index)
                 {
-                    if (MessageBox.Show("Deseja realmente apagar esta tarefa?", "ATENÇÃO!", MessageBoxButtons.YesNo) == DialogResult.Yes)
+                    if (MessageBox.Show("Deseja realmente apagar esta tarefa?\nSe houver N tarefas com nomes iguais, todas serão excluidas!", "ATENÇÃO!", MessageBoxButtons.YesNo) == DialogResult.Yes)
                     {
                         String Tarefa = (String)data_grid_view_result.CurrentRow.Cells[1].Value; 
-                        Excluir(Tarefa);
+                        ExcluirLista(Tarefa);
                     }
                 }
             }
@@ -161,43 +178,9 @@ namespace toDolist
                     "!!" +
                     "\n\n\n Erro: " + ex.Message);
             }
-            try
-            {
-                if (e.ColumnIndex == data_grid_view_result.Columns["selecao"].Index)
-                {
-                    String copia = Convert.ToString(data_grid_view_result.CurrentRow.Cells[1].Value);
-                    data_grid_view_result.EndEdit();
-                    String valor = data_grid_view_result.Rows[e.RowIndex].Cells[3].Value.ToString();
-                    if (valor == "True")
-                    {
-                        data_grid_view_result.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                        data_grid_view_result.Update();
-                        data_grid_view_result.Select();
-                        data_grid_view_result.CurrentRow.DefaultCellStyle.BackColor = Color.Yellow;
-                        btn_excluir_selecao.Visible = true;
-                        Numberscopy.Enqueue(copia);//Adiciona o valor que foi selecionado na fila, para que
-                        //possa ser removido ou não, caso ele não seja mais selecionado
-                        contador++;
-                    }
-                    else if (valor == "False")
-                    {
-                        data_grid_view_result.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-                        data_grid_view_result.Update();
-                        data_grid_view_result.Select();
-                        data_grid_view_result.CurrentRow.DefaultCellStyle.BackColor = Color.White;
-                        Numberscopy.Dequeue();//remove o valor da queue
-                        contador--;
-                        VerificaContadorDoBTN(contador);
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao marcar como concluído" +
-                    "!!" +
-                    "\n\n\n Erro: " + ex.Message);
-            }
+
         }
+      
         private void btn_excluir_selecao_Click(object sender, EventArgs e)
         {
             try
@@ -206,7 +189,7 @@ namespace toDolist
                 {
                     foreach (string number in Numberscopy)
                     {
-                        Excluir(number);
+                        ExcluirLista(number);
                         MessageBox.Show(number);
                     }
                 }
@@ -222,6 +205,7 @@ namespace toDolist
                 VerificaContadorDoBTN(contador);
             }
         }
+      
         private void btn_save_Click(object sender, EventArgs e)
         {
             try
@@ -236,6 +220,7 @@ namespace toDolist
                     "\n\n\n Erro: " + ex.Message);
             }
         }
+       
         private void Janela1_Load_1(object sender, EventArgs e)
         {
             try
@@ -259,6 +244,7 @@ namespace toDolist
                 ex.Message);
             }
         }
+      
         private void btn_excluir_lista_Click(object sender, EventArgs e)
         {
             try
@@ -267,7 +253,7 @@ namespace toDolist
                     "Deseja realmente apagar todas as tarefas?", "ATENÇÃO!", MessageBoxButtons.YesNo) == DialogResult.Yes)
                 {
                     L.ApagarTodaLista();
-                    ListarElementos();
+                    RecarregarGrid();
                 }
             }
             catch(Exception ex)

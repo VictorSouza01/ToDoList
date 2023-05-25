@@ -9,3 +9,14 @@ D:\Documentos\pastas\work\VB.NET\ToDoList json\toDolist\toDolist\bin\Debug\toDol
 D:\Documentos\pastas\work\VB.NET\ToDoList json\toDolist\toDolist\obj\Debug\toDolist.exe
 D:\Documentos\pastas\work\VB.NET\ToDoList json\toDolist\toDolist\obj\Debug\toDolist.pdb
 D:\Documentos\pastas\work\VB.NET\ToDoList json\toDolist\toDolist\obj\Debug\toDolist.Janela1.resources
+D:\DocumentosG\Projetos\.NET\To Do List\ToDoList\toDolist\toDolist\bin\Debug\toDolist.exe.config
+D:\DocumentosG\Projetos\.NET\To Do List\ToDoList\toDolist\toDolist\bin\Debug\toDolist.exe
+D:\DocumentosG\Projetos\.NET\To Do List\ToDoList\toDolist\toDolist\bin\Debug\toDolist.pdb
+D:\DocumentosG\Projetos\.NET\To Do List\ToDoList\toDolist\toDolist\obj\Debug\toDolist.csproj.AssemblyReference.cache
+D:\DocumentosG\Projetos\.NET\To Do List\ToDoList\toDolist\toDolist\obj\Debug\toDolist.csproj.SuggestedBindingRedirects.cache
+D:\DocumentosG\Projetos\.NET\To Do List\ToDoList\toDolist\toDolist\obj\Debug\toDolist.Janela1.resources
+D:\DocumentosG\Projetos\.NET\To Do List\ToDoList\toDolist\toDolist\obj\Debug\toDolist.Properties.Resources.resources
+D:\DocumentosG\Projetos\.NET\To Do List\ToDoList\toDolist\toDolist\obj\Debug\toDolist.csproj.GenerateResource.cache
+D:\DocumentosG\Projetos\.NET\To Do List\ToDoList\toDolist\toDolist\obj\Debug\toDolist.csproj.CoreCompileInputs.cache
+D:\DocumentosG\Projetos\.NET\To Do List\ToDoList\toDolist\toDolist\obj\Debug\toDolist.exe
+D:\DocumentosG\Projetos\.NET\To Do List\ToDoList\toDolist\toDolist\obj\Debug\toDolist.pdb

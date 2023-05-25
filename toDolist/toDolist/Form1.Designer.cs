@@ -41,7 +41,6 @@
             this.numeroTarefa = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Tarefas = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.btn_excluir = new System.Windows.Forms.DataGridViewImageColumn();
-            this.selecao = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.data_grid_view_result)).BeginInit();
             this.SuspendLayout();
             // 
@@ -54,24 +53,26 @@
             this.data_grid_view_result.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.numeroTarefa,
             this.Tarefas,
-            this.btn_excluir,
-            this.selecao});
+            this.btn_excluir});
             this.data_grid_view_result.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.data_grid_view_result.Location = new System.Drawing.Point(12, 120);
+            this.data_grid_view_result.Location = new System.Drawing.Point(16, 148);
+            this.data_grid_view_result.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.data_grid_view_result.Name = "data_grid_view_result";
             this.data_grid_view_result.ReadOnly = true;
+            this.data_grid_view_result.RowHeadersWidth = 51;
             dataGridViewCellStyle1.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.data_grid_view_result.RowsDefaultCellStyle = dataGridViewCellStyle1;
-            this.data_grid_view_result.Size = new System.Drawing.Size(835, 468);
+            this.data_grid_view_result.Size = new System.Drawing.Size(1113, 576);
             this.data_grid_view_result.TabIndex = 4;
             this.data_grid_view_result.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.data_grid_view_result_CellContentClick);
             // 
             // label1
             // 
             this.label1.Font = new System.Drawing.Font("Palatino Linotype", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(12, 94);
+            this.label1.Location = new System.Drawing.Point(16, 116);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(100, 23);
+            this.label1.Size = new System.Drawing.Size(133, 28);
             this.label1.TabIndex = 5;
             this.label1.Text = "TAREFAS:";
             // 
@@ -83,9 +84,10 @@
             this.btn_add.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_add.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_add.ForeColor = System.Drawing.SystemColors.ControlLightLight;
-            this.btn_add.Location = new System.Drawing.Point(430, 13);
+            this.btn_add.Location = new System.Drawing.Point(573, 16);
+            this.btn_add.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_add.Name = "btn_add";
-            this.btn_add.Size = new System.Drawing.Size(115, 27);
+            this.btn_add.Size = new System.Drawing.Size(153, 33);
             this.btn_add.TabIndex = 6;
             this.btn_add.Text = "ADICIONAR";
             this.btn_add.UseVisualStyleBackColor = false;
@@ -101,9 +103,10 @@
             this.btn_save.FlatAppearance.MouseDownBackColor = System.Drawing.Color.Transparent;
             this.btn_save.FlatAppearance.MouseOverBackColor = System.Drawing.Color.LightBlue;
             this.btn_save.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_save.Location = new System.Drawing.Point(809, 13);
+            this.btn_save.Location = new System.Drawing.Point(1079, 16);
+            this.btn_save.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_save.Name = "btn_save";
-            this.btn_save.Size = new System.Drawing.Size(38, 27);
+            this.btn_save.Size = new System.Drawing.Size(51, 33);
             this.btn_save.TabIndex = 7;
             this.btn_save.Tag = "SAVE";
             this.btn_save.UseVisualStyleBackColor = true;
@@ -112,18 +115,20 @@
             // txt_item
             // 
             this.txt_item.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_item.Location = new System.Drawing.Point(16, 13);
+            this.txt_item.Location = new System.Drawing.Point(21, 16);
+            this.txt_item.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.txt_item.Name = "txt_item";
-            this.txt_item.Size = new System.Drawing.Size(408, 26);
+            this.txt_item.Size = new System.Drawing.Size(543, 30);
             this.txt_item.TabIndex = 8;
             this.txt_item.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txt_item_KeyUp);
             // 
             // txt_qtd_tarefas
             // 
             this.txt_qtd_tarefas.Font = new System.Drawing.Font("Palatino Linotype", 11.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txt_qtd_tarefas.Location = new System.Drawing.Point(12, 71);
+            this.txt_qtd_tarefas.Location = new System.Drawing.Point(16, 87);
+            this.txt_qtd_tarefas.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.txt_qtd_tarefas.Name = "txt_qtd_tarefas";
-            this.txt_qtd_tarefas.Size = new System.Drawing.Size(412, 23);
+            this.txt_qtd_tarefas.Size = new System.Drawing.Size(549, 28);
             this.txt_qtd_tarefas.TabIndex = 9;
             this.txt_qtd_tarefas.Text = "N°";
             // 
@@ -134,9 +139,10 @@
             this.btn_excluir_selecao.FlatAppearance.BorderColor = System.Drawing.Color.Black;
             this.btn_excluir_selecao.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_excluir_selecao.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_excluir_selecao.Location = new System.Drawing.Point(686, 87);
+            this.btn_excluir_selecao.Location = new System.Drawing.Point(915, 107);
+            this.btn_excluir_selecao.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_excluir_selecao.Name = "btn_excluir_selecao";
-            this.btn_excluir_selecao.Size = new System.Drawing.Size(161, 27);
+            this.btn_excluir_selecao.Size = new System.Drawing.Size(215, 33);
             this.btn_excluir_selecao.TabIndex = 10;
             this.btn_excluir_selecao.Text = "Excluir selecionados";
             this.btn_excluir_selecao.UseVisualStyleBackColor = true;
@@ -154,9 +160,10 @@
             this.btn_excluir_lista.FlatAppearance.MouseOverBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(255)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
             this.btn_excluir_lista.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_excluir_lista.Font = new System.Drawing.Font("Arial", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_excluir_lista.Location = new System.Drawing.Point(765, 13);
+            this.btn_excluir_lista.Location = new System.Drawing.Point(1020, 16);
+            this.btn_excluir_lista.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.btn_excluir_lista.Name = "btn_excluir_lista";
-            this.btn_excluir_lista.Size = new System.Drawing.Size(38, 27);
+            this.btn_excluir_lista.Size = new System.Drawing.Size(51, 33);
             this.btn_excluir_lista.TabIndex = 11;
             this.btn_excluir_lista.UseVisualStyleBackColor = true;
             this.btn_excluir_lista.Click += new System.EventHandler(this.btn_excluir_lista_Click);
@@ -165,16 +172,18 @@
             // 
             this.numeroTarefa.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
             this.numeroTarefa.HeaderText = "N°";
+            this.numeroTarefa.MinimumWidth = 6;
             this.numeroTarefa.Name = "numeroTarefa";
             this.numeroTarefa.ReadOnly = true;
             this.numeroTarefa.Resizable = System.Windows.Forms.DataGridViewTriState.False;
             this.numeroTarefa.Visible = false;
-            this.numeroTarefa.Width = 44;
+            this.numeroTarefa.Width = 50;
             // 
             // Tarefas
             // 
             this.Tarefas.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Tarefas.HeaderText = "Tarefas";
+            this.Tarefas.MinimumWidth = 6;
             this.Tarefas.Name = "Tarefas";
             this.Tarefas.ReadOnly = true;
             this.Tarefas.Resizable = System.Windows.Forms.DataGridViewTriState.False;
@@ -185,26 +194,17 @@
             this.btn_excluir.HeaderText = "Excluir";
             this.btn_excluir.Image = ((System.Drawing.Image)(resources.GetObject("btn_excluir.Image")));
             this.btn_excluir.ImageLayout = System.Windows.Forms.DataGridViewImageCellLayout.Zoom;
+            this.btn_excluir.MinimumWidth = 6;
             this.btn_excluir.Name = "btn_excluir";
             this.btn_excluir.ReadOnly = true;
             this.btn_excluir.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.btn_excluir.Width = 44;
-            // 
-            // selecao
-            // 
-            this.selecao.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.selecao.HeaderText = "Check";
-            this.selecao.Name = "selecao";
-            this.selecao.ReadOnly = true;
-            this.selecao.Resizable = System.Windows.Forms.DataGridViewTriState.False;
-            this.selecao.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
-            this.selecao.Width = 63;
+            this.btn_excluir.Width = 52;
             // 
             // Janela1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(859, 600);
+            this.ClientSize = new System.Drawing.Size(1145, 738);
             this.Controls.Add(this.btn_excluir_lista);
             this.Controls.Add(this.btn_excluir_selecao);
             this.Controls.Add(this.txt_qtd_tarefas);
@@ -213,7 +213,8 @@
             this.Controls.Add(this.btn_add);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.data_grid_view_result);
-            this.MinimumSize = new System.Drawing.Size(664, 350);
+            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.MinimumSize = new System.Drawing.Size(879, 420);
             this.Name = "Janela1";
             this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
@@ -238,7 +239,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn numeroTarefa;
         private System.Windows.Forms.DataGridViewTextBoxColumn Tarefas;
         private System.Windows.Forms.DataGridViewImageColumn btn_excluir;
-        private System.Windows.Forms.DataGridViewCheckBoxColumn selecao;
     }
 }
 
