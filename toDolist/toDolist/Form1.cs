@@ -128,7 +128,7 @@ namespace toDolist
             {
                 MessageBox.Show("Erro ao adicionar uma nova tarefa\n\n\n" +
                     "Código do erro: \n\n\n" +
-                    ex.Message);
+                    ex.Message + "\nTente executar como administrador, pois é necessário savar o arquivo");
             }
             finally
             {
